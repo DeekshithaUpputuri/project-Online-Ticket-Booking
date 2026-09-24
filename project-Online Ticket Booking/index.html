@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TicketHub — book movies, cricket matches, and live events in seconds. Create an account, pick your seats, and get an instant digital ticket.">
+    <meta name="theme-color" content="#112033">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%23112033'/%3E%3Ctext x='50' y='68' font-size='58' font-family='Arial' font-weight='900' fill='white' text-anchor='middle'%3ET%3C/text%3E%3C/svg%3E">
+    <title>TicketHub | Find your next experience</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <header class="site-header">
+        <a class="brand" href="#home"><span class="brand-mark">T</span> TicketHub</a>
+
+        <button type="button" class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+
+        <nav id="siteNav">
+            <a href="#home">Home</a>
+            <a href="#events">Events</a>
+            <a href="#testimonials">Reviews</a>
+            <a href="#faq">FAQ</a>
+            <a href="#booking">Booking</a>
+        </nav>
+
+        <div class="header-actions">
+            <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+                <span class="theme-icon">🌙</span>
+            </button>
+            <div class="auth-area" id="authArea"></div>
+        </div>
+    </header>
+
+    <main id="main-content">
+
+    <section id="home" class="hero">
+        <div class="hero-copy" data-reveal>
+            <p class="eyebrow">Live moments. One simple place.</p>
+            <h1>Make plans<br><em>worth remembering.</em></h1>
+            <p class="hero-description">Discover the shows, matches, and nights out everyone will be talking about.</p>
+            <div class="hero-actions">
+                <button class="primary-button" onclick="scrollToEvents()">Explore events <span aria-hidden="true">&#8594;</span></button>
+                <button class="ghost-button" id="heroAccountBtn" onclick="openAuthModal('signup')">Create free account</button>
+            </div>
+        </div>
+        <div class="hero-note"><span class="live-dot"></span> 12 events happening this month</div>
+    </section>
+
+    <section id="events">
+        <div class="section-heading" data-reveal>
+            <div>
+                <p class="eyebrow">Curated for you</p>
+                <h2>Choose your next<br><em>experience.</em></h2>
+            </div>
+            <p class="section-intro">From blockbuster films to stadium energy and unforgettable live shows, book your perfect outing in seconds.</p>
+        </div>
+
+        <div class="category-grid">
+            <article class="category-card movie-card" data-reveal>
+                <div class="category-top">
+                    <span class="category-icon">🎬</span>
+                    <span class="category-tag">Movie tickets</span>
+                </div>
+                <h3>Movie Booking</h3>
+                <p>Reserve seats for the latest Bollywood, Hollywood, and regional releases with premium comfort.</p>
+                <div class="capacity-box">
+                    <span>Seating capacity</span>
+                    <strong>180 seats</strong>
+                </div>
+                <ul>
+                    <li>Premium screens</li>
+                    <li>Easy seat selection</li>
+                    <li>From ₹299</li>
+                </ul>
+                <div class="card-footer">
+                    <strong>From ₹299</strong>
+                    <button onclick="startMovieBooking()">Book now</button>
+                </div>
+            </article>
+
+            <article class="category-card cricket-card" data-reveal>
+                <div class="category-top">
+                    <span class="category-icon">🏏</span>
+                    <span class="category-tag">Cricket live</span>
+                </div>
+                <h3>Cricket Tickets</h3>
+                <p>Catch every boundary, cheer loud, and secure your seat for the most exciting matchday moments.</p>
+                <div class="capacity-box">
+                    <span>Seating capacity</span>
+                    <strong>2,500 seats</strong>
+                </div>
+                <ul>
+                    <li>Official stadium seating</li>
+                    <li>Limited availability</li>
+                    <li>From ₹799</li>
+                </ul>
+                <div class="card-footer">
+                    <strong>From ₹799</strong>
+                    <button onclick="startCricketBooking()">Book now</button>
+                </div>
+            </article>
+
+            <article class="category-card event-card" data-reveal>
+                <div class="category-top">
+                    <span class="category-icon">🎤</span>
+                    <span class="category-tag">Events & shows</span>
+                </div>
+                <h3>Events</h3>
+                <p>Explore music nights, comedy shows, exhibitions, and festival experiences curated for your city.</p>
+                <div class="capacity-box">
+                    <span>Seating capacity</span>
+                    <strong>520 seats</strong>
+                </div>
+                <ul>
+                    <li>Curated lineups</li>
+                    <li>Instant confirmation</li>
+                    <li>From ₹499</li>
+                </ul>
+                <div class="card-footer">
+                    <strong>From ₹499</strong>
+                    <button onclick="selectEvent('Events', 499, 520)">Book now</button>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section class="feature-showcase">
+        <div class="section-heading" data-reveal>
+            <div>
+                <p class="eyebrow">Built for modern ticketing</p>
+                <h2>Everything needed<br><em>for a seamless experience.</em></h2>
+            </div>
+            <p class="section-intro">Designed for customers, organizers, and admins with secure payments, live updates, and analytics built in.</p>
+        </div>
+
+        <div class="feature-grid">
+            <div class="feature-card" data-reveal>
+                <span class="feature-icon">🔐</span>
+                <h3>Secure checkout</h3>
+                <p>UPI, cards, wallets, and encrypted transactions for safe booking.</p>
+            </div>
+            <div class="feature-card" data-reveal>
+                <span class="feature-icon">🎟️</span>
+                <h3>Digital tickets</h3>
+                <p>Instant tickets with a unique ID and check-in code for the venue.</p>
+            </div>
+            <div class="feature-card" data-reveal>
+                <span class="feature-icon">📲</span>
+                <h3>Live notifications</h3>
+                <p>Email, SMS, and WhatsApp reminders for confirmation and updates.</p>
+            </div>
+            <div class="feature-card" data-reveal>
+                <span class="feature-icon">📊</span>
+                <h3>Organizer analytics</h3>
+                <p>Track ticket sales, trends, revenue, and customer behavior in real time.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-strip">
+        <div class="stat-item" data-reveal>
+            <strong data-count="50" data-suffix="K+">0</strong>
+            <span>Tickets sold</span>
+        </div>
+        <div class="stat-item" data-reveal>
+            <strong data-count="120" data-suffix="+">0</strong>
+            <span>Live events</span>
+        </div>
+        <div class="stat-item" data-reveal>
+            <strong data-count="4.9" data-decimal data-suffix="/5">0</strong>
+            <span>User rating</span>
+        </div>
+        <div class="stat-item" data-reveal>
+            <strong data-count="99.9" data-decimal data-suffix="%">0</strong>
+            <span>Secure payments</span>
+        </div>
+    </section>
+
+    <section class="value-section">
+        <div class="value-copy" data-reveal>
+            <p class="eyebrow">Why it works</p>
+            <h2>Built for convenience,<br><em>trust, and speed.</em></h2>
+            <ul class="value-list">
+                <li>Smart user accounts with booking history and saved preferences</li>
+                <li>Interactive seat selection with temporary holds during checkout</li>
+                <li>Personalized recommendations based on interests and past activity</li>
+                <li>Organizer dashboard for pricing, sales, seats, and promo codes</li>
+                <li>Review system, mobile-first layouts, and accessibility support</li>
+            </ul>
+        </div>
+        <div class="value-panel" data-reveal>
+            <div class="panel-item">
+                <span>Customer experience</span>
+                <strong>Fast, simple, stress-free</strong>
+            </div>
+            <div class="panel-item">
+                <span>Event management</span>
+                <strong>Real-time controls and reporting</strong>
+            </div>
+            <div class="panel-item">
+                <span>Scalability</span>
+                <strong>Ready for growth and high traffic</strong>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials">
+        <div class="section-heading" data-reveal>
+            <div>
+                <p class="eyebrow">Loved by ticket holders</p>
+                <h2>What our<br><em>customers say.</em></h2>
+            </div>
+            <p class="section-intro">A few words from people who booked their last outing through TicketHub.</p>
+        </div>
+        <div class="testimonial-grid" id="testimonialGrid"></div>
+    </section>
+
+    <section id="faq">
+        <div class="section-heading" data-reveal>
+            <div>
+                <p class="eyebrow">Good to know</p>
+                <h2>Frequently asked<br><em>questions.</em></h2>
+            </div>
+            <p class="section-intro">Can't find what you're looking for? Reach out to our support team anytime.</p>
+        </div>
+        <div class="faq-list" id="faqList" data-reveal></div>
+    </section>
+
+    <section id="booking">
+        <div class="section-heading booking-heading" data-reveal><div><p class="eyebrow">Almost there</p><h2>Reserve your<br><em>seat.</em></h2></div><p class="section-intro">Choose your experience, tell us who is coming, and we will handle the rest.</p></div>
+
+        <div class="booking-box">
+            <div class="booking-flow">
+                <div id="movieSelection" class="step-panel active">
+                    <div class="panel-header">
+                        <span>Step 1</span>
+                        <h3>Choose a movie</h3>
+                    </div>
+
+                    <div class="movie-filters">
+                        <input type="search" id="movieSearch" placeholder="Search movies..." oninput="renderMovieCards()">
+                        <div class="genre-chips" id="genreChips"></div>
+                    </div>
+
+                    <div id="movieList" class="movie-list"></div>
+                </div>
+
+                <div id="cricketStateSelection" class="step-panel">
+                    <div class="panel-header">
+                        <span>Step 1</span>
+                        <h3>Select stadium state</h3>
+                    </div>
+                    <div id="cricketStateList" class="option-list"></div>
+                </div>
+
+                <div id="theatreSelection" class="step-panel">
+                    <div class="panel-header">
+                        <span>Step 2</span>
+                        <h3>Select a theatre</h3>
+                    </div>
+                    <div id="theatreList" class="option-list"></div>
+                </div>
+
+                <div id="timeSelection" class="step-panel">
+                    <div class="panel-header">
+                        <span>Step 3</span>
+                        <h3 id="timeSelectionTitle">Timings</h3>
+                    </div>
+                    <div id="timeList" class="option-list"></div>
+                    <button class="next-button" type="button" onclick="showSeatPanel()">Next booking</button>
+                </div>
+
+                <div id="seatSelectionPanel" class="step-panel">
+                    <div class="panel-header">
+                        <span>Step 4</span>
+                        <h3>Select seats</h3>
+                    </div>
+
+                    <div class="seat-legend">
+                        <span><i class="legend-swatch standard"></i> Standard</span>
+                        <span><i class="legend-swatch premium"></i> Premium (+₹100)</span>
+                        <span><i class="legend-swatch selected"></i> Selected</span>
+                        <span><i class="legend-swatch booked"></i> Booked</span>
+                    </div>
+
+                    <div class="seats" id="seatMap"></div>
+
+                    <div class="seat-summary">
+                        <span id="seatHint">Choose 1 seat</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="booking-form">
+                <label for="eventName">Selected event</label>
+                <input type="text" id="eventName" placeholder="Choose a movie above" readonly>
+
+                <p class="auth-hint" id="authHint">You need to <button type="button" class="link-button" onclick="openAuthModal('login')">log in</button> before confirming a booking.</p>
+
+                <label for="customerName">Your name</label>
+                <input type="text" id="customerName" placeholder="Enter your name" required>
+
+                <label for="email">Email address</label>
+                <input type="email" id="email" placeholder="you@example.com" required>
+
+                <label for="quantity">Number of tickets</label>
+                <input type="number" id="quantity" value="1" min="1" max="4" onchange="calculateTotal()">
+
+                <label for="promoCode">Promo code <small>Optional</small></label>
+                <input type="text" id="promoCode" placeholder="e.g. FIRST50" oninput="calculateTotal()">
+                <p class="promo-hint" id="promoHint"></p>
+
+                <div class="total-row"><span>Total amount</span><strong>₹<span id="total">0</span></strong></div>
+
+                <button class="book-button" onclick="bookTicket()">
+                    Confirm booking <span aria-hidden="true">&#8594;</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="ticket" class="ticket-section">
+        <div class="section-heading"><div><p class="eyebrow">You are all set</p><h2>Your digital<br><em>ticket.</em></h2></div></div>
+
+        <div class="ticket-stub">
+            <div id="ticketDetails"></div>
+            <div class="ticket-code" id="ticketBarcode" aria-hidden="true"></div>
+        </div>
+
+        <div class="ticket-actions">
+            <button id="downloadTicket" class="download-button" type="button" onclick="downloadTicketFile()">
+                Download ticket <span aria-hidden="true">&#8595;</span>
+            </button>
+            <button class="print-button" type="button" onclick="window.print()">
+                Print / Save as PDF <span aria-hidden="true">&#128424;</span>
+            </button>
+        </div>
+    </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a class="brand" href="#home"><span class="brand-mark">T</span> TicketHub</a>
+                <p>Live moments, one simple place. Movies, cricket, and events — booked in seconds.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Explore</h4>
+                <a href="#events">Events</a>
+                <a href="#booking">Booking</a>
+                <a href="#faq">FAQ</a>
+            </div>
+            <div class="footer-links">
+                <h4>Company</h4>
+                <a href="#testimonials">Reviews</a>
+                <a href="#home">About</a>
+                <a href="#home">Careers</a>
+            </div>
+            <div class="footer-newsletter">
+                <h4>Stay in the loop</h4>
+                <form id="newsletterForm" onsubmit="handleNewsletterSignup(event)">
+                    <input type="email" id="newsletterEmail" placeholder="you@example.com" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+                <p class="newsletter-note" id="newsletterNote"></p>
+            </div>
+        </div>
+        <p class="footer-bottom">© 2026 TicketHub | Online Ticket Booking System — a student project.</p>
+    </footer>
+
+    <button type="button" class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+
+    <div class="toast-stack" id="toastStack" aria-live="polite"></div>
+
+    <div id="authModal" class="modal-overlay" onclick="handleOverlayClick(event, 'authModal')">
+        <div class="modal-box">
+            <button type="button" class="modal-close" onclick="closeModal('authModal')" aria-label="Close">&times;</button>
+
+            <div class="modal-tabs">
+                <button type="button" class="modal-tab active" id="loginTabBtn" onclick="switchAuthTab('login')">Log in</button>
+                <button type="button" class="modal-tab" id="signupTabBtn" onclick="switchAuthTab('signup')">Create account</button>
+            </div>
+
+            <form id="loginForm" class="auth-form" onsubmit="handleLogin(event)">
+                <p class="modal-subtitle">Welcome back. Log in to continue your booking.</p>
+                <label for="loginEmail">Email address</label>
+                <input type="email" id="loginEmail" placeholder="you@example.com" required>
+
+                <label for="loginPassword">Password</label>
+                <input type="password" id="loginPassword" placeholder="Enter your password" required>
+
+                <p class="auth-error" id="loginError"></p>
+
+                <button type="submit" class="primary-button auth-submit">Log in</button>
+                <p class="auth-switch">New here? <button type="button" class="link-button" onclick="switchAuthTab('signup')">Create an account</button></p>
+            </form>
+
+            <form id="signupForm" class="auth-form hidden" onsubmit="handleSignup(event)">
+                <p class="modal-subtitle">Create your free account to book tickets.</p>
+                <label for="signupName">Full name</label>
+                <input type="text" id="signupName" placeholder="Enter your name" required>
+
+                <label for="signupEmail">Email address</label>
+                <input type="email" id="signupEmail" placeholder="you@example.com" required>
+
+                <label for="signupPassword">Password <small>Min 6 characters</small></label>
+                <input type="password" id="signupPassword" placeholder="Create a password" minlength="6" required>
+
+                <p class="auth-error" id="signupError"></p>
+
+                <button type="submit" class="primary-button auth-submit">Create account</button>
+                <p class="auth-switch">Already have an account? <button type="button" class="link-button" onclick="switchAuthTab('login')">Log in</button></p>
+            </form>
+        </div>
+    </div>
+
+    <div id="accountModal" class="modal-overlay" onclick="handleOverlayClick(event, 'accountModal')">
+        <div class="modal-box account-modal">
+            <button type="button" class="modal-close" onclick="closeModal('accountModal')" aria-label="Close">&times;</button>
+
+            <div class="modal-tabs">
+                <button type="button" class="modal-tab active" id="bookingsTabBtn" onclick="switchAccountTab('bookings')">My bookings</button>
+                <button type="button" class="modal-tab" id="savedTabBtn" onclick="switchAccountTab('saved')">Saved movies</button>
+            </div>
+
+            <div id="bookingsPanel" class="account-panel">
+                <div id="bookingsList" class="account-list"></div>
+            </div>
+
+            <div id="savedPanel" class="account-panel hidden">
+                <div id="savedList" class="account-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

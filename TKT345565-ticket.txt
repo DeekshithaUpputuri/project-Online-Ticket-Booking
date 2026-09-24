@@ -1,0 +1,10 @@
+TICKETHUB - DIGITAL TICKET
+===========================
+Ticket ID: TKT345565
+Name: 3q5eyer
+Email: 2500032676@kluniversity.in
+Event: Avengers Movie
+Seats: A3
+Tickets: 1
+Total amount: ₹200
+Status: Booking confirmed

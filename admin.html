@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TicketHub | Admin Portal</title>
+
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+    <!-- ADMIN LOGIN -->
+
+    <div id="adminLogin" class="admin-login">
+
+        <div class="login-card">
+
+            <div class="admin-logo">
+                <span>T</span>
+            </div>
+
+            <p class="eyebrow">TicketHub Management</p>
+
+            <h1>Admin Portal</h1>
+
+            <p class="login-description">
+                Sign in to manage events, bookings and users.
+            </p>
+
+            <form id="adminLoginForm">
+
+                <label for="adminEmail">
+                    Admin email
+                </label>
+
+                <input
+                    type="email"
+                    id="adminEmail"
+                    placeholder="admin@tickethub.com"
+                    required
+                >
+
+                <label for="adminPassword">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="adminPassword"
+                    placeholder="Enter admin password"
+                    required
+                >
+
+                <p id="adminLoginError" class="login-error"></p>
+
+                <button type="submit" class="login-button">
+                    Sign in →
+                </button>
+
+            </form>
+
+            <a href="index.html" class="back-link">
+                ← Back to TicketHub
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- ADMIN DASHBOARD -->
+
+    <div id="adminDashboard" class="admin-dashboard hidden">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-brand">
+                <span class="brand-mark">T</span>
+                <strong>TicketHub</strong>
+            </div>
+
+            <p class="sidebar-label">
+                MANAGEMENT
+            </p>
+
+            <button
+                class="sidebar-link active"
+                data-section="dashboard"
+            >
+                📊 Dashboard
+            </button>
+
+            <button
+                class="sidebar-link"
+                data-section="events"
+            >
+                🎫 Events
+            </button>
+
+            <button
+                class="sidebar-link"
+                data-section="bookings"
+            >
+                📋 Bookings
+            </button>
+
+            <button
+                class="sidebar-link"
+                data-section="users"
+            >
+                👥 Users
+            </button>
+
+            <button
+                class="sidebar-link"
+                data-section="newsletter"
+            >
+                📧 Newsletter
+            </button>
+
+            <div class="sidebar-bottom">
+
+                <a href="index.html" class="sidebar-home">
+                    ← Customer website
+                </a>
+
+                <button id="adminLogout" class="logout-admin">
+                    Log out
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN -->
+
+        <main class="admin-main">
+
+            <header class="admin-header">
+
+                <div>
+                    <p class="eyebrow">Management console</p>
+                    <h1 id="pageTitle">
+                        Dashboard
+                    </h1>
+                </div>
+
+                <div class="admin-profile">
+                    <span class="admin-avatar">
+                        A
+                    </span>
+
+                    <div>
+                        <strong>Administrator</strong>
+                        <small>Super Admin</small>
+                    </div>
+                </div>
+
+            </header>
+
+
+            <!-- DASHBOARD -->
+
+            <section
+                id="dashboardSection"
+                class="admin-section active"
+            >
+
+                <div class="stats-grid">
+
+                    <div class="admin-stat">
+                        <span>👥</span>
+                        <p>Total users</p>
+                        <strong id="totalUsers">0</strong>
+                    </div>
+
+                    <div class="admin-stat">
+                        <span>🎫</span>
+                        <p>Total bookings</p>
+                        <strong id="totalBookings">0</strong>
+                    </div>
+
+                    <div class="admin-stat">
+                        <span>💰</span>
+                        <p>Total revenue</p>
+                        <strong id="totalRevenue">₹0</strong>
+                    </div>
+
+                    <div class="admin-stat">
+                        <span>📧</span>
+                        <p>Subscribers</p>
+                        <strong id="totalSubscribers">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-grid">
+
+                    <div class="admin-card">
+
+                        <div class="card-heading">
+                            <div>
+                                <p class="eyebrow">
+                                    Latest activity
+                                </p>
+
+                                <h2>
+                                    Recent bookings
+                                </h2>
+                            </div>
+                        </div>
+
+                        <div id="recentBookings"></div>
+
+                    </div>
+
+
+                    <div class="admin-card">
+
+                        <div class="card-heading">
+
+                            <div>
+                                <p class="eyebrow">
+                                    Catalog
+                                </p>
+
+                                <h2>
+                                    Available events
+                                </h2>
+                            </div>
+
+                        </div>
+
+                        <div id="eventOverview"></div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- EVENTS -->
+
+            <section
+                id="eventsSection"
+                class="admin-section"
+            >
+
+                <div class="section-toolbar">
+
+                    <div>
+                        <p class="eyebrow">
+                            Event management
+                        </p>
+
+                        <h2>
+                            Events
+                        </h2>
+                    </div>
+
+                    <button
+                        class="primary-admin-button"
+                        onclick="showToast('Add event feature can be connected to the event catalog.')"
+                    >
+                        + Add event
+                    </button>
+
+                </div>
+
+                <div
+                    class="admin-card"
+                    id="adminEventsList"
+                ></div>
+
+            </section>
+
+
+            <!-- BOOKINGS -->
+
+            <section
+                id="bookingsSection"
+                class="admin-section"
+            >
+
+                <div class="section-toolbar">
+
+                    <div>
+                        <p class="eyebrow">
+                            Transaction management
+                        </p>
+
+                        <h2>
+                            All bookings
+                        </h2>
+                    </div>
+
+                </div>
+
+                <div
+                    class="admin-card table-card"
+                    id="adminBookingsList"
+                ></div>
+
+            </section>
+
+
+            <!-- USERS -->
+
+            <section
+                id="usersSection"
+                class="admin-section"
+            >
+
+                <div class="section-toolbar">
+
+                    <div>
+                        <p class="eyebrow">
+                            Account management
+                        </p>
+
+                        <h2>
+                            Registered users
+                        </h2>
+                    </div>
+
+                </div>
+
+                <div
+                    class="admin-card table-card"
+                    id="adminUsersList"
+                ></div>
+
+            </section>
+
+
+            <!-- NEWSLETTER -->
+
+            <section
+                id="newsletterSection"
+                class="admin-section"
+            >
+
+                <div class="section-toolbar">
+
+                    <div>
+                        <p class="eyebrow">
+                            Communication
+                        </p>
+
+                        <h2>
+                            Newsletter subscribers
+                        </h2>
+                    </div>
+
+                </div>
+
+                <div
+                    class="admin-card table-card"
+                    id="adminNewsletterList"
+                ></div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <div id="adminToast" class="admin-toast"></div>
+
+
+    <script src="admin.js"></script>
+
+</body>
+</html>

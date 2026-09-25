@@ -1,0 +1,640 @@
+/* =========================================================
+   ADMIN PORTAL - TICKETHUB
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #f5f7fb;
+    --panel: #ffffff;
+    --dark: #111827;
+    --dark-soft: #374151;
+    --muted: #6b7280;
+    --line: #e5e7eb;
+    --green: #22c55e;
+    --blue: #3b82f6;
+    --purple: #8b5cf6;
+    --orange: #f59e0b;
+    --red: #ef4444;
+    --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: var(--bg);
+    color: var(--dark);
+    min-height: 100vh;
+}
+
+/* =========================================================
+   LOGIN
+   ========================================================= */
+
+.admin-login {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: linear-gradient(135deg, #f5f7fb, #eef2ff);
+}
+
+.login-card {
+    width: 100%;
+    max-width: 430px;
+    background: var(--panel);
+    padding: 40px;
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+}
+
+.admin-logo {
+    width: 58px;
+    height: 58px;
+    border-radius: 16px;
+    background: var(--dark);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 22px;
+}
+
+.eyebrow {
+    color: var(--blue);
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.login-card h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.login-description {
+    color: var(--muted);
+    margin-bottom: 28px;
+    line-height: 1.6;
+}
+
+.login-card label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 16px 0 7px;
+}
+
+.login-card input {
+    width: 100%;
+    padding: 13px 14px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    outline: none;
+    font-size: 14px;
+}
+
+.login-card input:focus {
+    border-color: var(--blue);
+}
+
+.login-button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    background: var(--dark);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.login-button:hover {
+    opacity: 0.9;
+}
+
+.login-error {
+    color: var(--red);
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+.back-link {
+    display: block;
+    margin-top: 22px;
+    text-align: center;
+    color: var(--dark-soft);
+    text-decoration: none;
+    font-size: 14px;
+}
+
+/* =========================================================
+   HIDDEN
+   ========================================================= */
+
+.hidden {
+    display: none !important;
+}
+
+/* =========================================================
+   ADMIN DASHBOARD
+   ========================================================= */
+
+.admin-dashboard {
+    min-height: 100vh;
+    display: flex;
+}
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.sidebar {
+    width: 250px;
+    min-height: 100vh;
+    background: #111827;
+    color: white;
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    padding: 8px;
+    margin-bottom: 35px;
+}
+
+.brand-mark {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: white;
+    color: #111827;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.sidebar-label {
+    font-size: 11px;
+    color: #9ca3af;
+    padding: 0 12px;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.sidebar-link {
+    width: 100%;
+    padding: 12px 14px;
+    margin-bottom: 5px;
+    border: none;
+    border-radius: 9px;
+    background: transparent;
+    color: #d1d5db;
+    text-align: left;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.sidebar-link:hover,
+.sidebar-link.active {
+    background: #1f2937;
+    color: white;
+}
+
+.sidebar-bottom {
+    margin-top: auto;
+}
+
+.sidebar-home {
+    display: block;
+    color: #d1d5db;
+    text-decoration: none;
+    padding: 12px 14px;
+    font-size: 14px;
+}
+
+.logout-admin {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1px solid #374151;
+    border-radius: 9px;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.logout-admin:hover {
+    background: #374151;
+}
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+
+.admin-main {
+    margin-left: 250px;
+    width: calc(100% - 250px);
+    padding: 32px;
+}
+
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.admin-header h1 {
+    font-size: 30px;
+}
+
+.admin-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.admin-profile small {
+    display: block;
+    color: var(--muted);
+    margin-top: 3px;
+}
+
+.admin-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--purple);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+/* =========================================================
+   SECTIONS
+   ========================================================= */
+
+.admin-section {
+    display: none;
+}
+
+.admin-section.active {
+    display: block;
+}
+
+/* =========================================================
+   STATISTICS
+   ========================================================= */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 24px;
+}
+
+.admin-stat {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 22px;
+    box-shadow: var(--shadow);
+}
+
+.admin-stat > span {
+    font-size: 25px;
+}
+
+.admin-stat p {
+    color: var(--muted);
+    font-size: 13px;
+    margin: 14px 0 7px;
+}
+
+.admin-stat strong {
+    font-size: 27px;
+}
+
+/* =========================================================
+   DASHBOARD CARDS
+   ========================================================= */
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.admin-card {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: var(--shadow);
+}
+
+.card-heading {
+    margin-bottom: 20px;
+}
+
+.card-heading h2 {
+    font-size: 20px;
+}
+
+/* =========================================================
+   RECENT BOOKINGS
+   ========================================================= */
+
+.activity-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.activity-row div strong,
+.activity-row div span {
+    display: block;
+}
+
+.activity-row span {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+.empty-state {
+    color: var(--muted);
+    text-align: center;
+    padding: 30px 10px;
+}
+
+/* =========================================================
+   EVENT OVERVIEW
+   ========================================================= */
+
+.event-overview {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.event-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    background: #f3f4f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+}
+
+.event-overview strong,
+.event-overview span {
+    display: block;
+}
+
+.event-overview span:last-child {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+/* =========================================================
+   TOOLBAR
+   ========================================================= */
+
+.section-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.section-toolbar h2 {
+    font-size: 26px;
+}
+
+.primary-admin-button {
+    border: none;
+    background: var(--blue);
+    color: white;
+    padding: 12px 17px;
+    border-radius: 9px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.primary-admin-button:hover {
+    opacity: 0.9;
+}
+
+/* =========================================================
+   EVENTS
+   ========================================================= */
+
+.event-management-list {
+    display: grid;
+    gap: 12px;
+}
+
+.managed-event {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 16px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+}
+
+.large-event-icon {
+    font-size: 28px;
+}
+
+.managed-event-info {
+    flex: 1;
+}
+
+.managed-event-info strong,
+.managed-event-info span {
+    display: block;
+}
+
+.managed-event-info span {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 5px 9px;
+    border-radius: 20px;
+    background: #dcfce7;
+    color: #15803d;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* =========================================================
+   TABLES
+   ========================================================= */
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 14px 12px;
+    border-bottom: 1px solid var(--line);
+    font-size: 14px;
+}
+
+th {
+    color: var(--muted);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+td small {
+    display: block;
+    color: var(--muted);
+    margin-top: 3px;
+}
+
+.table-card {
+    overflow: hidden;
+}
+
+/* =========================================================
+   TOAST
+   ========================================================= */
+
+.admin-toast {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    background: #111827;
+    color: white;
+    padding: 13px 18px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    transform: translateY(100px);
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s;
+    z-index: 1000;
+}
+
+.admin-toast.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width: 700px) {
+
+    .sidebar {
+        width: 200px;
+    }
+
+    .admin-main {
+        margin-left: 200px;
+        width: calc(100% - 200px);
+        padding: 20px;
+    }
+
+    .admin-header {
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+}
+
+@media (max-width: 550px) {
+
+    .admin-dashboard {
+        display: block;
+    }
+
+    .sidebar {
+        position: relative;
+        width: 100%;
+        min-height: auto;
+    }
+
+    .admin-main {
+        margin-left: 0;
+        width: 100%;
+        padding: 18px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-header {
+        flex-direction: column;
+    }
+
+    .section-toolbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .login-card {
+        padding: 28px 22px;
+    }
+
+}
